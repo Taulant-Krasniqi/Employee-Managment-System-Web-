@@ -1,0 +1,241 @@
+
+/* @import url("https://fonts.googleapis.com/css?family=Open+Sans|Prata"); */
+/**
+
+Mini Profile Template
+
+https://templatemo.com/tm-530-mini-profile
+
+
+Color Codes
+------------
+brown: #986665;
+green: #98cb00;
+orange: #cc6733;
+blue: #3398cc;
+dark-gray: #676767;
+light-gray: #999999;
+text-gray: #6b6b6b;
+
+*/
+@charset "UTF-8";
+
+html {
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #6b6b6b;
+  overflow: hidden;
+}
+
+a,
+button {
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.container-fluid {
+  max-width: 1200px;
+}
+
+.tm-bg-black-transparent {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.tm-bg-white-transparent {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.tm-bg-green {
+  background-color: #98cb00;
+}
+
+.tm-bg-orange {
+  background-color: #cc6733;
+}
+
+.tm-bg-blue {
+  background-color: #3398cc;
+}
+
+.tm-bg-dark-gray {
+  background-color: #676767;
+}
+
+/*
+  Welcome section
+*/
+#tmWelcome {
+  background-image: url(/assets/images/mini-profile-bg-01.png);
+  position: relative;
+  display: flex;
+  align-items: center;
+  
+}
+
+
+
+
+.parallax-window {
+  min-height: 1100px;
+  background: transparent;
+}
+
+
+
+.tm-welcome-container {
+  min-height: 400px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.tm-welcome-title {
+  margin-bottom: 40px;
+}
+
+.tm-welcome-left {
+  padding-right: 30px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.tm-welcome-left-col {
+  display: flex;
+  align-items: center;
+}
+
+.tm-welcome-right {
+  color: white;
+  background-color: #986665;
+  padding: 80px 43px 70px;
+  height: 100%;
+}
+
+.tm-welcome-icon {
+  margin-bottom: 50px;
+  display: block;
+  text-align: center;
+}
+.sub-container{
+  position: absolute;
+  display: flex;
+  padding-left: 640px;
+  padding-bottom: 48px;
+  height: auto;
+  width: 100%;
+ 
+}
+
+.logout{
+  padding-bottom: 970px;
+  padding-left: 1450px;
+}
+
+.logout button{
+  width: 100px;
+  height: 50px;
+}
+
+.sub-container span{
+  padding-top: 230px;
+}
+
+
+
+.btn2{
+  padding-left: 50px;
+ 
+}
+.btn3{
+  padding-left: 50px;
+}
+
+
+button {
+/*   
+  position: absolute; */
+  
+
+  background-color: #233142;
+  border: none;
+  border-radius: 4px;
+  color: #ccc;
+  font-size: 1.5rem;
+  font-family: "Prata";
+  letter-spacing: 2px;
+}
+
+button a{
+  color: #ccc;
+  font-size: 1.5rem;
+  font-family: "Prata";
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+
+
+#button1 {
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+}
+
+.button {
+  display: block;
+  width: 300px;
+  height: 80px;
+  cursor: pointer;
+  -webkit-transition: box-shadow 0.1s linear;
+  transition: box-shadow 0.1s linear;
+}
+.button:hover {
+  box-shadow: 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+@media (max-width: 1054px) {
+  .tm-contact-item-icon {
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 991px) {
+  .tm-contact-items-container {
+    flex-direction: column;
+  }
+
+  .tm-contact-item {
+    width: auto;
+    max-width: 680px;
+    min-height: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+  }
+
+  .tm-contact-item:last-child {
+    margin-right: auto;
+    margin-bottom: 0;
+  }
+
+  #tmContactForm {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+

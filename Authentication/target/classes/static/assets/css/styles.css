@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.content{
+    width: 100%;
+}
+
+.panel.col-md-5{
+    padding-top: 150px;
+    padding-left: 150px;
+}

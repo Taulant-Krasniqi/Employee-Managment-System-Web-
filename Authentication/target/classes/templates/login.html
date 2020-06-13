@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+    <head>
+        <title>
+
+        </title>
+        <link rel="stylesheet" type="text/css" href="assets/css/login.css" >
+    </head>
+
+    <body>
+
+        <form action="home" th:action="@{/login}" method="post" class='login'>
+
+            <input type="email" name="username" placeholder="Email">
+            <input type="password" name="password" placeholder="Password">
+
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="remember-me"> Remember Me
+                </label>
+            </div>
+
+            <button type="submit" th:text="#{label.login}">Login</button>
+
+            <div th:if="${param.error}"
+                 class="alert alert-danger alert-dismissable">
+                <p>
+                    <i class="icon fa fa-ban"></i> <span
+                        th:text="#{error.login_failed}">Invalid Email or
+											Password.</span>
+                </p>
+            </div>
+
+            <div th:if="${param.logout}"
+                 class="alert alert-info alert-dismissable">
+                <p>
+                    <i class="icon fa fa-info"></i> <span
+                        th:text="#{info.logout_success}">You have been logged
+											out.</span>
+                </p>
+            </div>
+
+
+          </form>
+          
+          
+
+
+    </body>
+</html>
