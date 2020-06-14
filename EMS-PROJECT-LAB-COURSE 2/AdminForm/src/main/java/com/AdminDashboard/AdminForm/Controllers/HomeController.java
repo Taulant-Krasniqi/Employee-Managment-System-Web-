@@ -1,6 +1,7 @@
 package com.AdminDashboard.AdminForm.Controllers;
 
 
+import com.AdminDashboard.AdminForm.models.Departament;
 import com.AdminDashboard.AdminForm.models.Employee;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
@@ -59,8 +60,21 @@ public class HomeController {
 
         List<Employee> temp = responseEntity.getBody();
 
+
+
+
+        ResponseEntity<List<Departament>> responseEntity2 = restTemplate.exchange("http://localhost:8081/Departament/Getall",
+
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Departament>>() {
+                });
+
+        List<Departament> temp2 = responseEntity2.getBody();
+
         model.addAttribute("Employee",temp);
 
+        model.addAttribute("Departament",temp2);
 
 
 
