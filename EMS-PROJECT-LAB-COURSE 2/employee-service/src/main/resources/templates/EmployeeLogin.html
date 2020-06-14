@@ -61,7 +61,7 @@
 
 
 			<div class="wrap-table100">
-					<div class="table" th:each=" e : ${Employee}">
+					<div class="table" th:each=" e : ${Employee}" th:if="${e.firstName.equalsIgnoreCase('filan')}">
 
 						<div class="row header">
 							<div class="cell">

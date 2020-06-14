@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/AdminForm/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Authentication/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Job-Calendar/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/discovery-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/employee-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gateway/src/main/java" charset="UTF-8" />

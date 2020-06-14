@@ -47,18 +47,9 @@
         </div>  
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-        <ul class="navbar-nav mr-lg-4 w-100">
-          <li class="nav-item nav-search d-none d-lg-block w-100">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="search">
-                  <i class="mdi mdi-magnify"></i>
-                </span>
-              </div>
-              <input type="text" class="form-control" placeholder="Search now" aria-label="search" aria-describedby="search">
-            </div>
-          </li>
-        </ul>
+
+
+
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown mr-1">
             <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
@@ -232,7 +223,6 @@
 					</div>
 					<div class="col-sm-6">
 						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
-						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
 					</div>
                 </div>
             </div>
@@ -371,30 +361,46 @@
 							<label>Email</label>
 							<input type="email" class="form-control" required>
 						</div>
+                        <div class="form-group">
+                            <label>Birthday</label>
+                            <input type="date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Gender('M' or 'F')</label>
+                            <input type="text" class="form-control" required>
+                        </div>
 						<div class="form-group">
 							<label>Street Name</label>
                             <input type="email" class="form-control" required>
 						</div>
                         <div class="form-group">
                             <label>Street Number</label>
-                            <input type="email" class="form-control" required>
+                            <input type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Zip Code</label>
-                            <input type="email" class="form-control" required>
+                            <input type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>State</label>
-                            <input type="email" class="form-control" required>
+                            <input type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Town</label>
-                            <input type="email" class="form-control" required>
+                            <input type="text" class="form-control" required>
                         </div>
 						<div class="form-group">
 							<label>Phone</label>
 							<input type="text" class="form-control" required>
 						</div>
+                        <div class="form-group">
+                            <label>Bank Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Bank Account Number</label>
+                            <input type="text" class="form-control" required>
+                        </div>
 
                         <div class="form-group blu-margin">
                             <select  class="form-control"  id="dropOperator">
@@ -424,28 +430,71 @@
 						<h4 class="modal-title">Edit Employee</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-					<div class="modal-body">					
-						<div class="form-group">
-							<label>Name</label>
-							<input type="text" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Email</label>
-							<input type="email" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Address</label>
-							<textarea class="form-control" required></textarea>
-						</div>
-						<div class="form-group">
-							<label>Phone</label>
-							<input type="text" class="form-control" required>
-						</div>					
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-info" value="Save">
-					</div>
+					<div class="modal-body">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Birthday</label>
+                            <input type="date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Gender('M' or 'F')</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Street Name</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Street Number</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Zip Code</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>State</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Town</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Bank Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Bank Account Number</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+
+                        <div class="form-group blu-margin">
+                            <select  class="form-control"  id="dropOperator">
+                                <option value="0">Asign To Departament</option>
+                                <option th:each="l : ${Departament}"
+                                        th:value="${l.departamentId}"
+                                        th:text="${l.departamentName}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
 				</form>
 			</div>
 		</div>
