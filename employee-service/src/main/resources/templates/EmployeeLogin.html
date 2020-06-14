@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en"
+
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	>
+<head>
+	<title>Table V02</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="imInformation/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<!-- <link rel="stylesheet" type="text/css" href="css/headerstyle.css"> -->
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+
+</head>
+<body >
+
+
+	<div class="header">
+		<a th:href="@{/Dashboard}" class="logo">EMPLOYEE</a>
+		<div class="header-right">
+			<a th:href="@{/Dashboard/request-leave}">Request Leave</a>
+
+		  <a th:href="@{/Dashboard/calendar}">Calendar</a>
+		</div>
+	  </div>
+	  
+	
+	<div class="limiter">
+
+
+
+
+		
+		
+
+
+
+		<div class="container-table100">
+
+
+
+
+
+
+			<div class="wrap-table100">
+					<div class="table" th:each=" e : ${Employee}">
+
+						<div class="row header">
+							<div class="cell">
+								Personal Details
+							</div>
+							<div class="cell">
+								Information
+							</div>
+							
+						</div>
+
+						<div class="row">
+							<div class="cell" data-title="Personal Details">
+								Name
+							</div>
+							<div  class="cell" data-title="Information">
+								<span th:text="${e.firstName}"> </span>
+							</div>
+
+						</div>
+
+						<div class="row">
+							<div class="cell" data-title="Personal Details">
+								Date Of Birth
+							</div>
+							<div class="cell" data-title="Information">
+								<span th:text="${e.birthday.toString()}"></span>
+							</div>
+							
+						</div>
+
+						<div class="row">
+							<div class="cell" data-title="Personal Details">
+								Gender
+							</div>
+							<div class="cell" data-title="Information">
+								<span th:text="${e.gender}"></span>
+							</div>
+							
+						</div>
+
+						<div class="row">
+							<div class="cell" data-title="Personal Details">
+								Email
+							</div>
+							<div class="cell" data-title="Information">
+								<span th:text="${e.email}"></span>
+							</div>
+							
+						</div>
+
+						<div class="row">
+							<div class="cell" data-title="Personal Details">
+								Phone
+							</div>
+							<div class="cell" data-title="Information">
+								<span th:text="${e.phone}"></span>
+							</div>
+							
+						</div>
+
+						<div class="row">
+							<div class="cell" data-title="Personal Details">
+								Address
+							</div>
+							<div class="cell" data-title="Information">
+								<span th:text="${e.getAddressByAddressId().getStreetName()}"></span>
+							</div>
+							
+						</div>
+
+						
+
+					</div>
+					
+			</div>
+			<div class="message">
+				<h3>Notifications</h3>
+					<!-- <form th:action=" @{/messages}" method="post"> -->
+						<textarea readonly class="messagetype" name="content" cols="50" rows="5">
+
+						</textarea>
+						
+						
+					<!-- </form> -->
+
+					<div class="wrap-table200">
+						<div class="table2">
+	
+							<div class="row header2">
+								<div class="cell2">
+									Attendance
+								</div>
+								<div class="cell3">
+									Leaves
+								</div>
+								
+							</div>
+							<div class="row2">
+								<div class="cell2"  data-title="Attendance">
+									5/30
+								</div>
+								<div class="cell2" data-title="Leaves">
+									5
+								</div>
+								
+							</div>
+	
+			</div>
+
+			
+
+
+		</div>
+	</div>
+		</div>
+
+
+	</div>
+
+
+	
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+</html>

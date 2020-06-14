@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html
+
+
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+
+>
+<head>
+    <title></title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/requestleave.css}">
+</head>
+<body>
+
+    <div class="form-style-5">
+        <form>
+            
+        <fieldset>
+            <a th:href="@{/Dashboard}">Go Back</a>
+        <legend><span class="number">1</span> Information</legend>
+        
+        <p>Leave Date</p>
+        <input type="date" name="field1">
+        <p>Return Date</p>
+        <input type="date" name="field2">
+        <label for="job">Category:</label>
+        <select id="job" name="field4">
+            
+        <optgroup label="Leave Categories" class="category" >
+        <option value="" selected disabled hidden>Choose here</option>
+          <option value="Personal">Personal</option>
+          <option value="Health">Health Issues</option>
+        </optgroup>
+          
+        
+        </select>
+        <input type="number" readonly name="field2" placeholder="Days Left"> 
+        
+             
+        </fieldset>
+        <fieldset>
+        <legend><span class="number">2</span> Reason</legend>
+        <textarea name="field3" placeholder="Description"></textarea>
+        </fieldset>
+        <input type="submit" value="Apply" />
+        </form>
+        </div>
+</body>
+</html>
