@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -129,13 +130,15 @@ public class HomeController
 
 	@RequestMapping(value = "/Dashboard", method = RequestMethod.GET)
 	public ModelAndView EmployeeDashboard() {
-		return new ModelAndView("redirect:http://localhost:8081/Dashboard");
+
+		return new ModelAndView("redirect:http://localhost:8081/Dashboard/");
 	}
 
 	@RequestMapping(value = "/Dashboard-Admin", method = RequestMethod.GET)
 	public ModelAndView AdminDashboard() {
 		return new ModelAndView("redirect:http://localhost:8082");
 	}
+
 
 
 
