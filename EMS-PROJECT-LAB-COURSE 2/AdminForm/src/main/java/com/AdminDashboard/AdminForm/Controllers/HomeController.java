@@ -7,10 +7,10 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -80,6 +80,27 @@ public class HomeController {
 
         return "basic-table";
     }
+
+
+    @DeleteMapping("/Delete/{employeeId}")
+
+    public String delEmp(@PathVariable int employeeId){
+        RestTemplate restTemplate = new RestTemplate();
+
+        ResponseEntity<String> DeleteEmp = restTemplate.exchange("http://localhost:8081/Employee/Delete/"+employeeId,
+                HttpMethod.DELETE,
+                null,
+                new ParameterizedTypeReference<String>(){});
+
+        String test = DeleteEmp.getBody();
+
+
+        return "redirect:/Admin-Dashboard/Employees";
+    }
+
+
+
+
 
     @GetMapping("/Main-Menu")
     private String getMenu(){
