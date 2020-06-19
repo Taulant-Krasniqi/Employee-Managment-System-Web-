@@ -10,6 +10,7 @@ import net.employee.employeeform.repositories.DepartamentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -44,6 +45,13 @@ public class RestEmployeeController {
 
     }
 
+    @GetMapping("/Getemployee/{employeeId}")
+    public Employee getEmployee(@PathVariable int employeeId){
+
+        return employeeService.getById(employeeId);
+
+    }
+
 
     @DeleteMapping("/Employee/Delete/{employeeId}")
 
@@ -56,6 +64,17 @@ public class RestEmployeeController {
 
         return "Deleted User "+employee.getFirstName();
 
+    }
+
+
+    @PutMapping("/Employee/Edit/{employeeId}")
+    public String editEmployee(@Valid  Employee newEmployee, @PathVariable int employeeId){
+
+        Employee temp = employeeService.getById(employeeId);
+
+        employeeService.SaveEmployee(newEmployee);
+
+        return "Employee Updated";
     }
 
 

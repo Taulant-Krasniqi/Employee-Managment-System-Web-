@@ -1,5 +1,6 @@
 package net.employee.employeeform.Services;
 
+import com.sun.media.sound.EmergencySoundbank;
 import net.employee.employeeform.entities.Employee;
 import net.employee.employeeform.repositories.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,9 @@ public class EmployeeService {
 
     public void DeleteEmployeeById(int id){
         employeeRepo.deleteById(id);
+    }
+
+    public void SaveEmployee(Employee employee){
+        employeeRepo.save(employee);
     }
 }

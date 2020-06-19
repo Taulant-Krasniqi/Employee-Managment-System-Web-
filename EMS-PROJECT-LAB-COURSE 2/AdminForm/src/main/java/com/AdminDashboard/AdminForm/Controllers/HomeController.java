@@ -3,6 +3,7 @@ package com.AdminDashboard.AdminForm.Controllers;
 
 import com.AdminDashboard.AdminForm.models.Departament;
 import com.AdminDashboard.AdminForm.models.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
@@ -18,8 +19,13 @@ import java.util.List;
 public class HomeController {
 
 
+    List<Departament> temp2 = null;
 
 
+
+
+    @Autowired
+    RestTemplate restTemplate;
 
     @GetMapping("")
     private String getIndex(){
@@ -41,7 +47,7 @@ public class HomeController {
     private String getList(Model model){
 
 
-        RestTemplate restTemplate = new RestTemplate();
+
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -70,7 +76,7 @@ public class HomeController {
                 new ParameterizedTypeReference<List<Departament>>() {
                 });
 
-        List<Departament> temp2 = responseEntity2.getBody();
+        temp2 = responseEntity2.getBody();
 
         model.addAttribute("Employee",temp);
 
@@ -85,7 +91,7 @@ public class HomeController {
     @DeleteMapping("/Delete/{employeeId}")
 
     public String delEmp(@PathVariable int employeeId){
-        RestTemplate restTemplate = new RestTemplate();
+
 
         ResponseEntity<String> DeleteEmp = restTemplate.exchange("http://localhost:8081/Employee/Delete/"+employeeId,
                 HttpMethod.DELETE,
@@ -97,6 +103,40 @@ public class HomeController {
 
         return "redirect:/Admin-Dashboard/Employees";
     }
+
+    @GetMapping("/Employee/Edit/{employeeId}")
+    public String employeeEdit(Model model,@PathVariable int employeeId){
+
+
+        ResponseEntity<Employee> getEmployee = restTemplate.exchange("http://localhost:8081/Getemployee/" + employeeId,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<Employee>() {
+                });
+        Employee temp = getEmployee.getBody();
+
+        model.addAttribute("Employee",temp);
+        model.addAttribute("Departament",temp2);
+
+
+        return "employee-edit";
+    }
+
+    @PutMapping("/Employee/Edit/{employeeId}")
+
+    public String employeeEditMethod(@Valid Employee newEmployee, @PathVariable int employeeId){
+
+        ResponseEntity<String> editEmp = restTemplate.exchange("http://localhost:8081/Employee/Edit/" + employeeId,
+                HttpMethod.PUT,
+                new HttpEntity<>(newEmployee),
+                new ParameterizedTypeReference<String>() {
+                });
+
+        return "redirect:/Admin-Dashboard/Employees";
+
+    }
+
+
 
 
 

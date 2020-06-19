@@ -255,11 +255,13 @@
 						<td th:text="${l.addressByAddressId.getTown()}"></td>
                         <td th:text="${l.phone}"></td>
                         <td>
-
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <form th:action="@{/Admin-Dashboard/Employee/Edit/{employeeId}(employeeId=${l.employeeId})}" method="get">
+                            <input type="submit" class="btn btn-success" value="Edit">
+<!--                            <a th:href="@{/Admin-Dashboard/Employee/Edit}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>-->
+                            </form>
                         </td>
                         <td>
-                            <span>
+                                    <span>
 <!--                            <a class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>-->
                             <form th:action="@{/Admin-Dashboard/Delete/{employeeId}(employeeId=${l.employeeId})}" th:method="delete">
                             <input  type="submit" class="btn btn-success" value="Delete">
