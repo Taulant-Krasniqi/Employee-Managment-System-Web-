@@ -32,78 +32,72 @@
     <div class="card">
 
         <div class="card-header"><i class="fa fa-fw fa-edit"></i> <strong>Edit User</strong> </div>
+        <div class="card-body" >
 
-        <div class="card-body" th:object="${Employee}">
+
+
+            <form id="forma" th:object="${Employee}" th:action="@{/Admin-Dashboard/Employee/Update/{employeeId}(employeeId=${Employee.employeeId})}" th:method="put">
 
             <div th:type="hidden" class="form-group">
 
-                <input  th:type="hidden" th:field="*{employeeId}" th:value="${Employee.employeeId}" type="text" class="form-control" required>
+                <input  th:type="hidden" th:field="*{employeeId}" type="text" class="form-control" required>
             </div>
 
             
 
             <div class="form-group">
                 <label>First Name</label>
-                <input th:field="*{firstName}" th:value="${Employee.firstName}" type="text" class="form-control" required>
+                <input th:field="*{firstName}" type="text" class="form-control" required>
             </div>
             <div class="form-group">
                 <label>Last Name</label>
-                <input th:field="*{lastName}" th:value="${Employee.lastName}" type="text" class="form-control" required>
+                <input th:field="*{lastName}" type="text" class="form-control" required>
             </div>
             <div class="form-group">
                 <label>Email</label>
-                <input th:field="*{email}" th:value="${Employee.email}" type="email" class="form-control" required>
+                <input  th:field="*{email}" type="email" class="form-control" required>
             </div>
             <div class="form-group">
                 <label>Birthday</label>
-                <input th:field="*{birthday}" th:value="${Employee.birthday}" type="date" class="form-control" required>
+                <input  th:field="*{birthday}" type="date" class="form-control" required>
             </div>
             <div class="form-group">
                 <label>Gender('M' or 'F')</label>
-                <input th:field="*{gender}" th:value="${Employee.gender}" type="text" class="form-control" required>
+                <input  th:field="*{gender}" type="text" class="form-control" required>
             </div>
-            <div class="form-group">
-                <label>Address Id</label>
-                <input th:field="*{addressByAddressId.addressId}" th:value="${Employee.addressByAddressId.getAddressId()}" type="text" class="form-control" required>
-            </div>
+
             <div class="form-group">
                 <label>Street Name</label>
-                <input th:field="*{addressByAddressId.streetName}" th:value="${Employee.addressByAddressId.streetName}" type="text" class="form-control" required>
+                <input  th:field="*{streetName}" type="text" class="form-control" required>
             </div>
-            <div class="form-group">
-                <label>Street Number</label>
-                <input th:field="*{addressByAddressId.streetNumber}" th:value="${Employee.addressByAddressId.streetNumber}" type="text" class="form-control" required>
-            </div>
+
             <div class="form-group">
                 <label>Zip Code</label>
-                <input th:field="*{addressByAddressId.zipCode}" th:value="${Employee.addressByAddressId.zipCode}" type="text" class="form-control" required>
+                <input  th:field="*{zipCode}" type="text" class="form-control" required>
             </div>
-            <div class="form-group">
-                <label>State</label>
-                <input th:field="*{addressByAddressId.state}" th:value="${Employee.addressByAddressId.state}" type="text" class="form-control" required>
-            </div>
+
             <div class="form-group">
                 <label>Town</label>
-                <input th:field="*{addressByAddressId.town}" th:value="${Employee.addressByAddressId.town}" type="text" class="form-control" required>
+                <input  th:field="*{town}" type="text" class="form-control" required>
             </div>
             <div class="form-group">
                 <label>Phone</label>
-                <input th:field="*{phone}" th:value="${Employee.phone}" type="text" class="form-control" required>
+                <input  th:field="*{phone}" type="text" class="form-control" required>
             </div>
             <div class="form-group">
                 <label>Bank Name</label>
-                <input th:field="*{bankName}" th:value="${Employee.bankDetails}" type="text" class="form-control" required>
+                <input  th:field="*{bankName}" type="text" class="form-control" required>
             </div>
             <div class="form-group">
                 <label>Bank Account Number</label>
-                <input th:field="*{bankDetails}" th:value="${Employee.bankDetails}" type="text" class="form-control" required>
+                <input  th:field="*{bankDetails}" type="text" class="form-control" required>
             </div>
 
             <div class="form-group blu-margin">
                 <select  class="form-control"  id="dropOperator">
                     <option value="0">Asign To Departament</option>
-                    <option th:each="l : ${Departament}" th:if="${Employee.getDepartamentByDepartamentId().departamentId == l.departamentId}"
-                            th:field="*{departamentByDepartamentId}" th:value="${Employee.departamentByDepartamentId}"
+                    <option th:each="l : ${Departament}" th:if="${Employee.departamentByDepartamentId.departamentId == l.departamentId}"
+                            th:value="${l.departamentId}" th:field="*{departamentByDepartamentId}"
                             th:text="${l.departamentName}">
                     </option>
                 </select>
@@ -118,15 +112,17 @@
 
                 </form>
 
-                <form th:action="@{/Admin-Dashboard/Employee/Edit/{employeeId}(employeeId=${Employee.employeeId})}" th:method="Put">
+
                 <input type="submit" class="btn btn-success" value="Edit">
 
-                </form>
+
             </div>
+            </form>
+    </div>
 
     </div>
-    </div>
 </div>
+
 
 
 

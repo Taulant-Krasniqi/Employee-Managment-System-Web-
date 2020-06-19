@@ -1,12 +1,10 @@
 package net.employee.employeeform.controllers;
 
 
-import com.netflix.discovery.converters.Auto;
 import net.employee.employeeform.Services.DepartamentService;
 import net.employee.employeeform.Services.EmployeeService;
 import net.employee.employeeform.entities.Departament;
 import net.employee.employeeform.entities.Employee;
-import net.employee.employeeform.repositories.DepartamentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -67,15 +65,32 @@ public class RestEmployeeController {
     }
 
 
-    @PutMapping("/Employee/Edit/{employeeId}")
-    public String editEmployee(@Valid  Employee newEmployee, @PathVariable int employeeId){
+    @PutMapping("/Employee/Update/{employeeId}")
+    public String editEmployee(@RequestBody Employee newEmployee, @PathVariable int employeeId){
 
         Employee temp = employeeService.getById(employeeId);
 
-        employeeService.SaveEmployee(newEmployee);
+
+        temp.setFirstName(newEmployee.getFirstName());
+        temp.setLastName(newEmployee.getLastName());
+        temp.setEmail(newEmployee.getEmail());
+        temp.setBirthday(newEmployee.getBirthday());
+        temp.setStreetName(newEmployee.getStreetName());
+        temp.setTown(newEmployee.getTown());
+        temp.setZipCode(newEmployee.getZipCode());
+        temp.setBankName(newEmployee.getBankName());
+        temp.setBankDetails(newEmployee.getBankDetails());
+        temp.setGender(newEmployee.getGender());
+        temp.setPhone(newEmployee.getPhone());
+        temp.setPositionByPositionId(newEmployee.getPositionByPositionId());
+        temp.setDepartamentByDepartamentId(newEmployee.getDepartamentByDepartamentId());
+
+        employeeService.SaveEmployee(temp);
 
         return "Employee Updated";
     }
+
+
 
 
 

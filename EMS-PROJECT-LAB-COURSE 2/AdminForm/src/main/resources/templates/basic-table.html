@@ -252,7 +252,7 @@
 						</td>
                         <td th:text="${l.firstName + l.lastName}"></td>
                         <td th:text="${l.email}"></td>
-						<td th:text="${l.addressByAddressId.getTown()}"></td>
+						<td th:text="${l.town}"></td>
                         <td th:text="${l.phone}"></td>
                         <td>
                             <form th:action="@{/Admin-Dashboard/Employee/Edit/{employeeId}(employeeId=${l.employeeId})}" method="get">

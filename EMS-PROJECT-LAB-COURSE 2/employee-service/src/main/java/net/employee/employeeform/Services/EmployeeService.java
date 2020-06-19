@@ -1,6 +1,5 @@
 package net.employee.employeeform.Services;
 
-import com.sun.media.sound.EmergencySoundbank;
 import net.employee.employeeform.entities.Employee;
 import net.employee.employeeform.repositories.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,9 @@ public class EmployeeService {
 
     public Employee getById(int i){
         Optional<Employee> temp = employeeRepo.findById(i);
-        return temp.get();
+
+        Employee temp2 = temp.get();
+        return temp2;
     }
 
     public void DeleteEmployeeById(int id){
@@ -31,6 +32,6 @@ public class EmployeeService {
     }
 
     public void SaveEmployee(Employee employee){
-        employeeRepo.save(employee);
+        employeeRepo.saveAndFlush(employee);
     }
 }

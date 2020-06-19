@@ -13,12 +13,14 @@ public class Employee {
     private Date birthday;
     private String phone;
     private String gender;
+    private String streetName;
+    private String town;
+    private String zipCode;
     private String bankName;
     private String bankDetails;
-    private Address addressByAddressId;
-
-    private Position positionByPositionId;
     private Departament departamentByDepartamentId;
+    private Position positionByPositionId;
+
 
 
     public int getEmployeeId() {
@@ -65,7 +67,6 @@ public class Employee {
         this.birthday = birthday;
     }
 
-
     public String getPhone() {
         return phone;
     }
@@ -81,6 +82,33 @@ public class Employee {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
+    }
+
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
 
@@ -113,25 +141,25 @@ public class Employee {
                 Objects.equals(birthday, employee.birthday) &&
                 Objects.equals(phone, employee.phone) &&
                 Objects.equals(gender, employee.gender) &&
+                Objects.equals(streetName, employee.streetName) &&
+                Objects.equals(town, employee.town) &&
+                Objects.equals(zipCode, employee.zipCode) &&
                 Objects.equals(bankName, employee.bankName) &&
                 Objects.equals(bankDetails, employee.bankDetails);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(employeeId, firstName, lastName, email, birthday, phone, gender, bankName, bankDetails);
+        return Objects.hash(employeeId, firstName, lastName, email, birthday, phone, gender, streetName, town, zipCode, bankName, bankDetails);
     }
 
-
-    public Address getAddressByAddressId() {
-        return addressByAddressId;
+    public Departament getDepartamentByDepartamentId() {
+        return departamentByDepartamentId;
     }
 
-    public void setAddressByAddressId(Address addressByAddressId) {
-        this.addressByAddressId = addressByAddressId;
+    public void setDepartamentByDepartamentId(Departament departamentByDepartamentId) {
+        this.departamentByDepartamentId = departamentByDepartamentId;
     }
-
-
 
 
     public Position getPositionByPositionId() {
@@ -143,13 +171,6 @@ public class Employee {
     }
 
 
-    public Departament getDepartamentByDepartamentId() {
-        return departamentByDepartamentId;
-    }
-
-    public void setDepartamentByDepartamentId(Departament departamentByDepartamentId) {
-        this.departamentByDepartamentId = departamentByDepartamentId;
-    }
 
    
 }

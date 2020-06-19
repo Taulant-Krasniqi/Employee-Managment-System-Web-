@@ -122,19 +122,28 @@ public class HomeController {
         return "employee-edit";
     }
 
-    @PutMapping("/Employee/Edit/{employeeId}")
 
-    public String employeeEditMethod(@Valid Employee newEmployee, @PathVariable int employeeId){
+    @PutMapping(value = "/Employee/Update/{employeeId}", consumes="application/json")
 
-        ResponseEntity<String> editEmp = restTemplate.exchange("http://localhost:8081/Employee/Edit/" + employeeId,
+    public String employeeEditMethod(@RequestBody Employee newEmployee, @PathVariable int employeeId){
+
+
+
+        ResponseEntity<String> editEmp = restTemplate.exchange("http://localhost:8081/Employee/Update/" + employeeId,
                 HttpMethod.PUT,
                 new HttpEntity<>(newEmployee),
                 new ParameterizedTypeReference<String>() {
-                });
+                }
+        );
 
         return "redirect:/Admin-Dashboard/Employees";
 
     }
+
+
+
+
+
 
 
 

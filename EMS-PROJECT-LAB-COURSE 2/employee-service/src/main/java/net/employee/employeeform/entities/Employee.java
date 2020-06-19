@@ -13,12 +13,13 @@ public class Employee {
     private Date birthday;
     private String phone;
     private String gender;
+    private String streetName;
+    private String town;
+    private String zipCode;
     private String bankName;
     private String bankDetails;
-    private Address addressByAddressId;
-
-    private Position positionByPositionId;
     private Departament departamentByDepartamentId;
+    private Position positionByPositionId;
 
 
     @Id
@@ -92,6 +93,36 @@ public class Employee {
     }
 
     @Basic
+    @Column(name = "Street_Name", nullable = false, length = 255)
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    @Basic
+    @Column(name = "Town", nullable = false, length = 255)
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
+    }
+
+    @Basic
+    @Column(name = "Zip_Code", nullable = false, length = 255)
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    @Basic
     @Column(name = "Bank_Name", nullable = false, length = 255)
     public String getBankName() {
         return bankName;
@@ -123,35 +154,16 @@ public class Employee {
                 Objects.equals(birthday, employee.birthday) &&
                 Objects.equals(phone, employee.phone) &&
                 Objects.equals(gender, employee.gender) &&
+                Objects.equals(streetName, employee.streetName) &&
+                Objects.equals(town, employee.town) &&
+                Objects.equals(zipCode, employee.zipCode) &&
                 Objects.equals(bankName, employee.bankName) &&
                 Objects.equals(bankDetails, employee.bankDetails);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(employeeId, firstName, lastName, email, birthday, phone, gender, bankName, bankDetails);
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "AddressID", referencedColumnName = "AddressID", nullable = false)
-    public Address getAddressByAddressId() {
-        return addressByAddressId;
-    }
-
-    public void setAddressByAddressId(Address addressByAddressId) {
-        this.addressByAddressId = addressByAddressId;
-    }
-
-
-
-    @ManyToOne
-    @JoinColumn(name = "PositionID", referencedColumnName = "PositionID", nullable = false)
-    public Position getPositionByPositionId() {
-        return positionByPositionId;
-    }
-
-    public void setPositionByPositionId(Position positionByPositionId) {
-        this.positionByPositionId = positionByPositionId;
+        return Objects.hash(employeeId, firstName, lastName, email, birthday, phone, gender, streetName, town, zipCode, bankName, bankDetails);
     }
 
     @ManyToOne
@@ -164,5 +176,15 @@ public class Employee {
         this.departamentByDepartamentId = departamentByDepartamentId;
     }
 
-   
+    @ManyToOne
+    @JoinColumn(name = "PositionID", referencedColumnName = "PositionID", nullable = false)
+    public Position getPositionByPositionId() {
+        return positionByPositionId;
+    }
+
+    public void setPositionByPositionId(Position positionByPositionId) {
+        this.positionByPositionId = positionByPositionId;
+    }
+
+
 }
