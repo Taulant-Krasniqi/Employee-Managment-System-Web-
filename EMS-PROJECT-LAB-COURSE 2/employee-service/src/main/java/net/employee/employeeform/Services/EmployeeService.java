@@ -34,4 +34,8 @@ public class EmployeeService {
     public void SaveEmployee(Employee employee){
         employeeRepo.saveAndFlush(employee);
     }
+
+    public void addEmp(Employee employee){
+        employeeRepo.save(employee);
+    }
 }

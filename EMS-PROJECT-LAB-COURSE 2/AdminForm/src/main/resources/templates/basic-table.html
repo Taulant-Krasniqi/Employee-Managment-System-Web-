@@ -222,8 +222,10 @@
 						<h2>Manage <b>Employees</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
-					</div>
+                        <form th:action="@{/Admin-Dashboard/Employee/Add}" th:method="get" >
+						<input value="Add New Employee" type="submit" class="btn btn-success" data-toggle="modal">
+                        </form>
+                    </div>
                 </div>
             </div>
             <table id="tabletest" class="table table-striped table-hover">

@@ -93,24 +93,46 @@
                 <input  th:field="*{bankDetails}" type="text" class="form-control" required>
             </div>
 
+<!--                <div class="form-group">-->
+<!--                    <label>Departament</label>-->
+<!--                    <input  th:field="*{departamentByDepartamentId.departamentId}" type="text" class="form-control" required>-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label>Position</label>-->
+<!--                    <input  th:field="*{positionByPositionId.positionId}" type="text" class="form-control" required>-->
+<!--                </div>-->
+
             <div class="form-group blu-margin">
-                <select  class="form-control"  id="dropOperator">
+                <select th:field="*{departamentByDepartamentId.departamentId}"  class="form-control"  id="dropOperator">
                     <option value="0">Asign To Departament</option>
-                    <option th:each="l : ${Departament}" th:if="${Employee.departamentByDepartamentId.departamentId == l.departamentId}"
-                            th:value="${l.departamentId}" th:field="*{departamentByDepartamentId}"
-                            th:text="${l.departamentName}">
+                    <option th:each="D : ${Departament}"
+
+                            th:value="${D.departamentId}"
+                            th:text="${D.departamentName}">
                     </option>
                 </select>
             </div>
+
+                <div class="form-group blu-margin">
+                    <select th:field="*{positionByPositionId.positionId}"  class="form-control"  id="dropOperator">
+                        <option value="0">Asign Position</option>
+                        <option th:each="P : ${Position}"
+
+                                th:value="${P.positionId}"
+                                th:text="${P.positionName}">
+                        </option>
+                    </select>
+                </div>
 
 
 
             <div class="modal-footer">
 
-                <form th:action="@{/Admin-Dashboard/Employees}" th:method="Get">
-                <input type="submit" class="btn btn-default" data-dismiss="modal" value="Cancel">
 
-                </form>
+                <a onclick="location.href = '/Admin-Dashboard/Employees'" type="submit" class="btn btn-default" data-dismiss="modal" value="Cancel">Cancel</a>
+
+
 
 
                 <input type="submit" class="btn btn-success" value="Edit">

@@ -15,17 +15,11 @@ import javax.validation.Valid;
 public class RestController {
 
 
+    @Autowired
+    RestTemplate restTemplate;
 
-//
-//    @GetMapping(value = "/Employee/Update/{employeeId}")
-//
-//    public int employeeEditMethod(@Valid Employee newEmployee, @PathVariable int employeeId){
-//
-//
-//
-//        return employeeId;
-//
-//    }
+
+
 
 
 

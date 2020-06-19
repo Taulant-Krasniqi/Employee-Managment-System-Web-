@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en"
+
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+
+>
+<head>
+    <meta charset="utf-8">
+
+    <link rel="shortcut icon" href="https://demo.learncodeweb.com/favicon.ico">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+
+
+
+<body>
+
+
+
+
+
+
+<div class="container">
+
+
+
+    <div class="card">
+
+        <div class="card-header"><i class="fa fa-fw fa-edit"></i> <strong>Add Employee</strong> </div>
+        <div class="card-body" >
+
+
+
+            <form id="forma" th:action="@{/Admin-Dashboard/Employee/Add}" th:object="${Employee}"  th:method="post">
+
+
+
+
+
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input th:field="*{firstName}" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input th:field="*{lastName}" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input  th:field="*{email}" type="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Birthday</label>
+                    <input  th:field="*{birthday}" type="date" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Gender('M' or 'F')</label>
+                    <input  th:field="*{gender}" type="text" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Street Name</label>
+                    <input  th:field="*{streetName}" type="text" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Zip Code</label>
+                    <input  th:field="*{zipCode}" type="text" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Town</label>
+                    <input  th:field="*{town}" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input  th:field="*{phone}" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Bank Name</label>
+                    <input  th:field="*{bankName}" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Bank Account Number</label>
+                    <input  th:field="*{bankDetails}" type="text" class="form-control" required>
+                </div>
+
+                <div class="form-group blu-margin">
+                    <select  class="form-control"  id="dropOperator">
+                        <option value="0">Asign To Departament</option>
+                        <option th:each="l : ${Departament}"
+                                th:value="${l.departamentId}" th:field="*{departamentByDepartamentId}"
+                                th:text="${l.departamentName}">
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group blu-margin">
+                    <select  class="form-control"  id="dropOperator">
+                        <option value="0">Asign Position</option>
+                        <option th:each="p : ${Position}"
+                                th:value="${p.positionId}" th:field="*{positionByPositionId}"
+                                th:text="${p.positionName}">
+
+
+                        </option>
+                    </select>
+                </div>
+
+
+
+                <div class="modal-footer">
+
+
+                    <a type="submit" class="btn btn-default" data-dismiss="modal" value="Cancel">Cancel</a>
+
+
+
+
+                    <input type="submit" class="btn btn-success" value="Add">
+
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/jquery.caret/0.1/jquery.caret.js"></script>
+<script src="https://www.solodev.com/_/assets/phone/jquery.mobilePhoneNumber.js"></script>
+<script>
+    $(document).ready(function() {
+        jQuery(function($){
+            var input = $('[type=tel]')
+            input.mobilePhoneNumber({allowPhoneWithoutPrefix: '+1'});
+            input.bind('country.mobilePhoneNumber', function(e, country) {
+                $('.country').text(country || '')
+            })
+        });
+    });
+</script>
+
+
+</body>
+
+</html>

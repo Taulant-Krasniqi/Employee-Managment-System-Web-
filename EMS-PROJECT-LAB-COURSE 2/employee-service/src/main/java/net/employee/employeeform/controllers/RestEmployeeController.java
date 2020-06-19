@@ -3,8 +3,10 @@ package net.employee.employeeform.controllers;
 
 import net.employee.employeeform.Services.DepartamentService;
 import net.employee.employeeform.Services.EmployeeService;
+import net.employee.employeeform.Services.PositionService;
 import net.employee.employeeform.entities.Departament;
 import net.employee.employeeform.entities.Employee;
+import net.employee.employeeform.entities.Position;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,9 @@ public class RestEmployeeController {
 
     @Autowired
     private DepartamentService departamentService;
+
+    @Autowired
+    private PositionService positionService;
 
 
 
@@ -64,6 +69,20 @@ public class RestEmployeeController {
 
     }
 
+    @PostMapping("/Employee/Add")
+
+    public String AddEmployee(@RequestBody Employee employee){
+
+
+
+            employeeService.SaveEmployee(employee);
+
+
+
+        return "Employee added";
+
+    }
+
 
     @PutMapping("/Employee/Update/{employeeId}")
     public String editEmployee(@RequestBody Employee newEmployee, @PathVariable int employeeId){
@@ -88,6 +107,12 @@ public class RestEmployeeController {
         employeeService.SaveEmployee(temp);
 
         return "Employee Updated";
+    }
+
+
+    @GetMapping("/Position/GetAll")
+    public List<Position> getAllPos(){
+        return positionService.findall();
     }
 
 

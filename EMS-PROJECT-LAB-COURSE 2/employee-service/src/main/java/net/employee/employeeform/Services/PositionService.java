@@ -17,4 +17,6 @@ public class PositionService {
     public List<Position> findall(){
         return positionRepo.findAll();
     }
+
+
 }
