@@ -50,8 +50,27 @@ public class HomeController {
         return "typography";
     }
 
+
+    @GetMapping("/Main-Menu")
+    private String getMenu(){
+        return "basic_elements";
+    }
+
+    @GetMapping("/Review-Leaves")
+    private String getReviews(){
+        return "Review_Leaves";
+    }
+
+
+    @GetMapping("/Add-Holiday-Category")
+    private String getAddHoliday(){
+        return "Add-Holiday";
+    }
+
+
     @GetMapping("/Employees")
     private String getList(Model model){
+
 
 
 
@@ -211,10 +230,6 @@ public class HomeController {
 
 
 
-    @GetMapping("/Main-Menu")
-    private String getMenu(){
-        return "basic_elements";
-    }
 
 
 
