@@ -91,20 +91,20 @@
                 </div>
 
                 <div class="form-group blu-margin">
-                    <select  class="form-control"  id="dropOperator">
+                    <select th:field="*{departamentByDepartamentId.departamentId}"  class="form-control"  id="dropOperator">
                         <option value="0">Asign To Departament</option>
                         <option th:each="l : ${Departament}"
-                                th:value="${l.departamentId}" th:field="*{departamentByDepartamentId}"
+                                th:value="${l.departamentId}"
                                 th:text="${l.departamentName}">
                         </option>
                     </select>
                 </div>
 
                 <div class="form-group blu-margin">
-                    <select  class="form-control"  id="dropOperator">
+                    <select th:field="*{positionByPositionId.positionId}" class="form-control"  id="dropOperator">
                         <option value="0">Asign Position</option>
                         <option th:each="p : ${Position}"
-                                th:value="${p.positionId}" th:field="*{positionByPositionId}"
+                                th:value="${p.positionId}"
                                 th:text="${p.positionName}">
 
 

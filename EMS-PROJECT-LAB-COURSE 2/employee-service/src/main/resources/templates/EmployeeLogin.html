@@ -61,7 +61,7 @@
 
 
 			<div class="wrap-table100">
-					<div class="table" th:each=" e : ${Employee}" th:if="${e.firstName.equalsIgnoreCase('filan')}">
+					<div class="table" th:each=" e : ${Employee}" th:if="${e.firstName.equalsIgnoreCase('filan1')}">
 
 						<div class="row header">
 							<div class="cell">
@@ -128,7 +128,7 @@
 								Address
 							</div>
 							<div class="cell" data-title="Information">
-								<span th:text="${e.getAddressByAddressId().getStreetName()}"></span>
+								<span th:text="${e.streetName}"></span>
 							</div>
 							
 						</div>

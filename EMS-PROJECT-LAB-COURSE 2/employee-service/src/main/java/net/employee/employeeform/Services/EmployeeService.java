@@ -38,4 +38,8 @@ public class EmployeeService {
     public void addEmp(Employee employee){
         employeeRepo.save(employee);
     }
+
+    public Employee getByEmail(String email){
+        return employeeRepo.findByEmail(email);
+    }
 }
