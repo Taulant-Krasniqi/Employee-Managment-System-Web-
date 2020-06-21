@@ -5,7 +5,10 @@ import net.login.springbootsecurity.entities.User;
 import net.login.springbootsecurity.repositories.PersistRepo;
 import net.login.springbootsecurity.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -13,7 +16,6 @@ import java.security.Principal;
 import java.util.Optional;
 
 
-@RequestMapping("/rest")
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
 
@@ -26,16 +28,18 @@ public class RestController {
 
 
 
+    @GetMapping("/testouser")
+    public String getUser(){
+        String username = null;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-//    @GetMapping("/Employee/Verify")
-//    public String verifyEmp(Principal principal){
-//
-//
-//        Optional<User> temp = userRepository.findByEmail(principal.getName());
-//
-//
-//        return temp.get().getEmail();
-//
-//
-//    }
+        if (principal instanceof UserDetails) {
+             username = ((UserDetails)principal).getUsername();
+        } else {
+             username = principal.toString();
+        }
+
+        return username;
+
+    }
 }

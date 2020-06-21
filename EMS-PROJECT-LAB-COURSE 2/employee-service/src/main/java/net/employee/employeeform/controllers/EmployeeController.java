@@ -42,21 +42,7 @@ public class EmployeeController {
     @GetMapping("")
     public String EmployeeDashboard(Model model){
 
-        RestTemplate restTemplate = new RestTemplate();
-
-        ResponseEntity<String> getEmail = restTemplate.exchange("http://localhost:8080/rest/Employee/Verify",
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<String>() {
-                });
-
-
-
-        model.addAttribute("Employee",employeeService.getByEmail(getEmail.getBody()));
-
-//        model.addAttribute("Notification",notificationRepo.findAll());
-
-
+       model.addAttribute("Employee",employeeService.getall());
         return "EmployeeLogin";
     }
 

@@ -154,6 +154,24 @@ public class RestEmployeeController {
 
 
 
+
+
+    @GetMapping("/testuserino")
+
+    public String getUsertest(){
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        ResponseEntity<String> getuser = restTemplate.exchange("http://localhost:8080/testouser",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<String>() {
+                });
+
+
+        return getuser.getBody();
+    }
+
 }
 
 

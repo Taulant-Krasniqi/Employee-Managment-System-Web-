@@ -35,7 +35,7 @@
 <div class="container">
 
 
-<form action="#" th:action="@{/Home/user/add}" th:object="${user}" method="post">
+<form action="#" th:action="@{/Home/user/add}" th:object="${UserModel}" th:method="post">
 
     <h1>Add A New User</h1>
     <p>Please fill in this form to create an account.</p>
@@ -52,11 +52,26 @@
     <input type="password" th:field="*{password}" placeholder="Enter Password" name="psw" required>
 
 
-<!--        Code below was to try and make admin and users selection by checkbox but its for later release-->
+
+
+    <div class="form-group blu-margin">
+
+        <select th:field="*{roleByid.id}" class="form-control"  id="dropOperator">
+            <option value="0">Asign Role</option>
+            <option th:each="r : ${Role}"
+                    th:value="${r.id}"
+                    th:text="${r.name}"
+            >
+            </option>
+        </select>
+
+    </div>
+
+
 <!--        <ul>-->
 <!--            <li th:each="r : ${Role}">-->
 <!--                <div>-->
-<!--                    <input name="check" class="check" type="checkbox" onchange="cbChange(this)"  th:value="${Role}">-->
+<!--                    <input name="check" class="check" type="checkbox" onchange="cbChange(this)" th:field="${r.id}">-->
 <!--                    <label th:text="${r.name}">-->
 
 <!--                    </label>-->
@@ -64,15 +79,15 @@
 <!--            </li>-->
 <!--        </ul>-->
 
-<!--    <script>-->
-<!--        function cbChange(obj) {-->
-<!--            var cbs = document.getElementsByClassName("check");-->
-<!--            for (var i = 0; i < cbs.length; i++) {-->
-<!--                cbs[i].checked = false;-->
-<!--            }-->
-<!--            obj.checked = true;-->
-<!--        }-->
-<!--    </script>-->
+    <script>
+        function cbChange(obj) {
+            var cbs = document.getElementsByClassName("check");
+            for (var i = 0; i < cbs.length; i++) {
+                cbs[i].checked = false;
+            }
+            obj.checked = true;
+        }
+    </script>
 
 
 
@@ -84,16 +99,12 @@
         <button onclick="location.href='/Home'" type="button" class="cancelbtn">Cancel</button>
 
 
-        <button onclick="myFunction()" type="submit" class="signupbtn">Sign Up</button>
+        <button  type="submit" class="signupbtn">Add User</button>
     </div>
 
 </form>
 </div>
-<script>
-    function myFunction() {
-        alert("User Has Been Added Successfully");
-    }
-</script>
+
 <!--<script th:src="@{'/assets/js/jquery-2.1.4.min.js'}"></script>-->
 <!--<script th:src="@{'/assets/bootstrap/js/bootstrap.min.js'}"></script>-->
 </body>

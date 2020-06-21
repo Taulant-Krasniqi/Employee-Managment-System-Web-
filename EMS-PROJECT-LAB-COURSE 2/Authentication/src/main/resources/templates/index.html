@@ -24,7 +24,7 @@ https://templatemo.com/tm-530-mini-profile
   </head>
   <body>
     <!-- Welcome Section -->
-    
+
     <section id="tmWelcome" class="parallax-window" data-parallax="scroll" >
       <div class="logout">
         <button class="button" id="button1" ><a th:href="@{/logout}">Logout</a></button>
@@ -43,11 +43,16 @@ https://templatemo.com/tm-530-mini-profile
           <button class="button" id="button1" ><a th:href="@{/Home/add-users}">Add Users</a></button>
         </span>
 
-        <span class="btn3"><button class="button" id="button1"><a th:href="@{/Home/Change-Password}">Change Password</a></button></span>
 
-       
-      
+
+        <span class="btn3">
+          <button class="button" id="button1"><a th:href="@{/Home/Change-Password}">Change Password</a></button></span>
+
+
+
+
       </div>
+
      
   
       
@@ -57,45 +62,7 @@ https://templatemo.com/tm-530-mini-profile
 
       
     </section>
-    
 
 
-
-<!--    <script th:src="@{/assets/js/jquery.min.js}"></script>-->
-<!--    <script th:src="@{/assets/js/parallax.min.js}"></script>-->
-<!--    <script th:src="@{/assets/js/button.js}"></script>-->
-<!--    <script>-->
-<!--      function detectMsBrowser() {-->
-<!--        using_ms_browser =-->
-<!--          navigator.appName == "Microsoft Internet Explorer" ||-->
-<!--          (navigator.appName == "Netscape" &&-->
-<!--            navigator.appVersion.indexOf("Edge") > -1) ||-->
-<!--          (navigator.appName == "Netscape" &&-->
-<!--            navigator.appVersion.indexOf("Trident") > -1);-->
-
-<!--        if (using_ms_browser == true) {-->
-<!--          alert(-->
-<!--            "Please use Chrome or Firefox for the best browsing experience!"-->
-<!--          );-->
-<!--        }-->
-<!--      }-->
-<!--      function setBrandMarginTop() {-->
-<!--        var bottomContainerHeight = $(".tm-welcome-container").height();-->
-
-<!--        $(".tm-brand-container-outer").css({-->
-<!--          "margin-top": -bottomContainerHeight + "px"-->
-<!--        });-->
-<!--      }-->
-
-<!--      $(function() {-->
-<!--        setBrandMarginTop();-->
-<!--        detectMsBrowser();-->
-
-<!--        // Handle window resize event-->
-<!--        $(window).resize(function() {-->
-<!--          setBrandMarginTop();-->
-<!--        });-->
-<!--      });-->
-<!--    </script>-->
   </body>
 </html>

@@ -1,5 +1,6 @@
 package net.login.springbootsecurity.web;
 
+import net.login.springbootsecurity.Models.UserModel;
 import net.login.springbootsecurity.entities.Role;
 import net.login.springbootsecurity.entities.User;
 import net.login.springbootsecurity.entities.UserRole;
@@ -44,8 +45,6 @@ public class HomeController
 	{
 //		model.addAttribute("msgs", messageRepository.findAll());
 
-
-
 		return "index";
 	}
 	
@@ -58,31 +57,41 @@ public class HomeController
 
 	@GetMapping("/add-users")
 	public String test(Model model){
-		User temp = new User();
+		UserModel temp = new UserModel();
 
-		model.addAttribute("user",temp);
+		model.addAttribute("UserModel",temp);
 		model.addAttribute("Role", roleRepository.findAll());
 		return "addusers";
 	}
 
 	@PostMapping("/user/add")
-	public String addStudent(@Valid User user) {
+	public String addStudent(@ModelAttribute("UserModel")@RequestBody UserModel user,@ModelAttribute("Role")@RequestBody Role role) {
 
-		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		userRepository.save(user);
+		User tempuser = new User();
+
+		tempuser.setId(user.getId());
+		tempuser.setName(user.getName());
+		tempuser.setEmail(user.getEmail());
+		tempuser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+
+
+//
+//		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		userRepository.save(tempuser);
 		UserRole temp = new UserRole();
 
 
 
 
-		temp.setUserId(user.getId());
+		temp.setUserId(tempuser.getId());
 
-//		By Default admin can only add users with role ROLE_USER, for admins will be later on
 
-		temp.setRoleId(2);
+		temp.setRoleId(user.getRoleByid().getId());
 
 
 		userRoleRepository.save(temp);
+
+
 		return "redirect:/Home";
 
 //		for(int i = 0 ; i < r.size(); i++){
@@ -107,9 +116,9 @@ public class HomeController
 	}
 
 	@GetMapping("/Change-Password")
-	public String pwchange(Model model){
-		User temp = new User();
-		model.addAttribute("user",temp);
+	public String pwchange(Model model,Principal principal){
+		Optional<User> temp = userRepository.findByEmail(principal.getName());
+		model.addAttribute("user",temp.get());
 		return "ChangePassword";
 	}
 
