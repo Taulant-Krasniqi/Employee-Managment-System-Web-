@@ -3,9 +3,11 @@ package net.employee.employeeform.controllers;
 
 import net.employee.employeeform.Services.DepartamentService;
 import net.employee.employeeform.Services.EmployeeService;
+import net.employee.employeeform.Services.HolidayCategoryService;
 import net.employee.employeeform.Services.PositionService;
 import net.employee.employeeform.entities.Departament;
 import net.employee.employeeform.entities.Employee;
+import net.employee.employeeform.entities.HolidayCategory;
 import net.employee.employeeform.entities.Position;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -30,6 +32,9 @@ public class RestEmployeeController {
 
     @Autowired
     private PositionService positionService;
+
+    @Autowired
+    private HolidayCategoryService holidayCategoryService;
 
 
     //    This is for later use, to make Restful API Calls to this method
@@ -70,6 +75,15 @@ public class RestEmployeeController {
 
     }
 
+    @DeleteMapping("/Holiday-Category-Delete/{categoryId}")
+    public String deleteHolidayCategory(@PathVariable int categoryId){
+
+        holidayCategoryService.deleteHolidayCatByInt(categoryId);
+
+        return "Deleted HolidayCategory";
+
+    }
+
     @PostMapping("/Employee/Add")
 
     public String AddEmployee(@RequestBody Employee employee) {
@@ -81,6 +95,30 @@ public class RestEmployeeController {
         return "Employee added";
 
     }
+
+    @PostMapping("/Holiday-Category-Add")
+    public String addHolidayCat(@RequestBody HolidayCategory holidayCategory){
+
+        holidayCategoryService.addHolidayCat(holidayCategory);
+
+
+        return "HolidayCat Added";
+
+    }
+
+    @PutMapping("/Holiday-Category/Update/{categoryId}")
+    public String editHolidayCat(@RequestBody HolidayCategory holidayCategory, @PathVariable int categoryId){
+        HolidayCategory tempHoliday = holidayCategoryService.getById(categoryId);
+
+        tempHoliday.setCategoryName(holidayCategory.getCategoryName());
+        tempHoliday.setCategoryDays(holidayCategory.getCategoryDays());
+
+        holidayCategoryService.editHolidayCat(tempHoliday);
+
+        return "Holiday Category Edited";
+    }
+
+
 
 
     @PutMapping("/Employee/Update/{employeeId}")

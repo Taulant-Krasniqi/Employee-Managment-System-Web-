@@ -1,6 +1,8 @@
 package com.AdminDashboard.AdminForm.Controllers;
 
 
+import com.AdminDashboard.AdminForm.Entities.HolidayCategory;
+import com.AdminDashboard.AdminForm.Services.HolidayCategoryService;
 import com.AdminDashboard.AdminForm.models.Departament;
 import com.AdminDashboard.AdminForm.models.Employee;
 import com.AdminDashboard.AdminForm.models.Position;
@@ -14,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.jws.WebParam;
 import javax.validation.Valid;
 import java.util.Collections;
 import java.util.List;
@@ -34,6 +37,9 @@ public class HomeController {
     @Autowired
     RestTemplate restTemplate;
 
+    @Autowired
+    private HolidayCategoryService holidayCategoryService;
+
     @GetMapping("")
     private String getIndex(){
         return "index";
@@ -50,9 +56,23 @@ public class HomeController {
         return "typography";
     }
 
+    @GetMapping("/Holiday-Category-Edit/{categoryId}")
+    private String EditHoliday(Model model, @PathVariable int categoryId){
+
+
+
+        model.addAttribute("HolidayCategory",holidayCategoryService.getById(categoryId));
+
+        return "Edit-Holiday";
+    }
+
 
     @GetMapping("/Main-Menu")
-    private String getMenu(){
+    private String getMenu(Model model){
+
+
+        model.addAttribute("HolidayCategory",holidayCategoryService.getAllCategories());
+
         return "basic_elements";
     }
 
@@ -63,8 +83,67 @@ public class HomeController {
 
 
     @GetMapping("/Add-Holiday-Category")
-    private String getAddHoliday(){
+    private String getAddHoliday(Model model){
+
+        HolidayCategory temp = new HolidayCategory();
+        model.addAttribute("HolidayCategory",temp);
+
+
         return "Add-Holiday";
+    }
+
+    @PostMapping("/Add-Holiday-Category")
+    private String addHoliday(@ModelAttribute("HolidayCategory")@RequestBody HolidayCategory holidayCategory){
+        holidayCategoryService.addHolidayCat(holidayCategory);
+
+
+        ResponseEntity<String> tempholiday = restTemplate.exchange("http://localhost:8081/Holiday-Category-Add",
+                HttpMethod.POST,
+                new HttpEntity<>(holidayCategory),
+                new ParameterizedTypeReference<String>() {
+                });
+
+
+        return "redirect:/Admin-Dashboard/Main-Menu";
+    }
+
+    @DeleteMapping("/Holiday-Category-Delete/{categoryId}")
+    private String deleteHolidayCat(@PathVariable int categoryId){
+
+        holidayCategoryService.deleteHolidayCatByInt(categoryId);
+
+        ResponseEntity<String> tempHoliday = restTemplate.exchange("http://localhost:8081/Holiday-Category-Delete/" + categoryId,
+                HttpMethod.DELETE,
+                null,
+                new ParameterizedTypeReference<String>() {
+                });
+
+
+
+
+        return "redirect:/Admin-Dashboard/Main-Menu";
+    }
+
+    @PutMapping("/Holiday-Category/Update/{categoryId}")
+    public String editHolidayCat(@ModelAttribute("HolidayCategory")@RequestBody HolidayCategory holidayCategory, @PathVariable int categoryId){
+
+
+        HolidayCategory tempHoliday = holidayCategoryService.getById(categoryId);
+
+        tempHoliday.setCategoryName(holidayCategory.getCategoryName());
+        tempHoliday.setCategoryDays(holidayCategory.getCategoryDays());
+
+
+        ResponseEntity<String> holidaytemp2 = restTemplate.exchange("http://localhost:8081/Holiday-Category/Update/" + categoryId,
+                HttpMethod.PUT,
+                new HttpEntity<>(holidayCategory),
+                new ParameterizedTypeReference<String>() {
+                });
+
+
+        holidayCategoryService.editHolidayCat(tempHoliday);
+
+        return "redirect:/Admin-Dashboard/Main-Menu";
     }
 
 

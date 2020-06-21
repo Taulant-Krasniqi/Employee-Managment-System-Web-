@@ -36,9 +36,13 @@
 
 
 
-            <form id="forma" th:object="${HolidayCategory}" th:action="@{/Admin-Dashboard/Add-Holiday-Category}" th:method="post">
+            <form id="forma" th:object="${HolidayCategory}" th:action="@{/Admin-Dashboard/Holiday-Category/Update/{categoryId} (categoryId=${HolidayCategory.categoryId})}" th:method="put">
 
 
+                <div th:type="hidden" class="form-group">
+                    <label>Holiday's Category Name</label>
+                    <input th:type="hidden" th:field="*{categoryId}" type="text" class="form-control" required>
+                </div>
 
 
 
@@ -63,7 +67,7 @@
 
 
 
-                    <input type="submit" class="btn btn-success" value="Add">
+                    <input type="submit" class="btn btn-success" value="Edit">
 
 
                 </div>

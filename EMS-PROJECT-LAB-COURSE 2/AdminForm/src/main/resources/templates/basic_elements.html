@@ -244,24 +244,24 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <tr th:each="h : ${HolidayCategory}">
               <td> </td>
 
-              <td >Personal</td>
-              <td >25</td>
+              <td th:text="${h.categoryName}" ></td>
+              <td th:text="${h.categoryDays}"></td>
 
 
 
 
               <td>
-                <form>
+                <form th:action="@{/Admin-Dashboard/Holiday-Category-Edit/{categoryId}(categoryId = ${h.categoryId})}" th:method="get">
                   <input type="submit" class="btn btn-success" value="Edit">
                 </form>
               </td>
 
               <td>
                 <span>
-                  <form>
+                  <form th:action="@{/Admin-Dashboard/Holiday-Category-Delete/{categoryId}(categoryId=${h.categoryId})}" th:method="delete">
                     <input  type="submit" class="btn btn-success" value="Delete">
                   </form>
                 </span>
